@@ -1,10 +1,11 @@
 const { MongoClient, GridFSBucket } = require('mongodb');
+require('dotenv').config()
 
-const url = "mongodb://localhost/";
+const url = process.env.MONGO_URL;
 const client = new MongoClient(url);
-const dbname = 'file';
+const dbname = process.env.DB_NAME ;
 
-let dbInstance; // Cached database instance
+let dbInstance; 
 
 module.exports.connectMongo = async () => {
   if (!dbInstance) {
